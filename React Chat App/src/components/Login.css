@@ -1,0 +1,77 @@
+#login{
+    height: 100vh;
+    background-color: #FDD2BF;
+    display: grid;
+    place-items: center;
+}
+
+#login-container{
+    z-index: 2;
+    color: white;
+    max-width: 550px;
+    padding: 1.2em;
+    height: 50vh;
+    position: relative;
+    background-color: #B97A95;
+}
+#login-container button{
+    border:1px solid white;
+    z-index: 2;
+    margin:  1em 4em;
+    background-color: #B97A95;
+    border-radius: 5px;
+    padding: 0.9em 1.5em;
+    font-weight: bold;
+}
+
+#login-container button:hover{
+    background-color: #FDD2BF;
+}
+
+#login-container h1{
+    margin: 1.5em;
+}
+#login-container h5{
+    margin: 4em 4em;
+    
+}
+
+svg{
+    z-index: -1;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    width: 150px;
+}
+#left-hand{
+    animation: left-hand 2s infinite alternate;
+}
+
+.circle{
+    animation: circle 1.5s infinite alternate ease-in-out;
+    
+}
+@keyframes circle {
+    100%{
+        transform: translateY(40px);
+    }
+    
+}
+@keyframes left-hand {
+    0%{
+        transform: rotate(3deg);
+       transform-origin: bottom;
+    }
+    100%{
+        transform: rotate(14deg);
+       transform-origin: bottom; 
+    }
+}
+
+@media screen and (max-width:360px) {
+    html{
+        font-size: 70%;
+    }
+
+
+}
