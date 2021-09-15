@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'DM Mono', monospace;
+    /* background-color: rgb(22, 22, 61); */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+}
+
+
+:root{
+    --primary-clr:#17141d;
+    --secondary-clr:#ff8a00;
+}
+
+#weather-card{
+    
+    box-shadow: 0 0 10px #ff8a00,0 0 20px #ff8a00;
+    background: #17141d;
+    color: var(--secondary-clr);
+    overflow: hidden;
+    border-radius: 20px;
+    width: 300px;
+    height: 70%;
+    text-align: center;
+}
+
+
+@media screen and (max-width:640px) {
+    #weather-card{
+        width: 90%;
+    }
+}
+.input input{
+
+    width: 100%;
+    padding: 0.5em 2em;
+    background: #17141d;
+    color: #ff8a00;
+    font-family: 'DM Mono', monospace;
+}
+
+#error{
+   display: none;
+   color:red;
+}
+.icon_body{
+    height: 60%;
+    position: relative;
+   
+}
+.input input:focus{
+    outline: none;
+}
+.output{
+    background: linear-gradient(90deg,#ff8a00,#e52e71);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 3px 0;
+}
+
+.city_name{
+    z-index:1;
+    font-weight: bold;
+    width: 100%;
+    font-size: 1.3rem;
+    position: absolute;
+    text-align: center;
+}
+
+.temp{
+    border-radius: 55px;
+    /* box-shadow: inset 16px 16px 32px #e6e6e6,inset -16px -16px 32px #fff; */
+    position: relative;
+    margin: 1em auto;
+    padding: 0.3em 0;
+    width: 30%;
+    color: white;
+    overflow: hidden;
+    z-index: 1;
+    background-color:#2b2b2c ;
+}
+.mercury{
+    z-index: -1;
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    border-radius: 55px;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, #fb7740,red);
+    animation: rise 2s ease-in-out infinite;
+}
+
+@keyframes rise {
+    0%,100%{
+        clip-path: polygon(0% 45%,15% 44%,32% 50%,54% 60%,70% 61%,
+        84% 59%,100% 52%,100% 100%,0% 100%);
+    }
+    50%{
+        clip-path: polygon(0% 60%,16% 65%,34% 66%,51% 62%,67% 50%,
+        84% 45%,100% 46%,100% 100%,0% 100%);
+    }
+}
+
+
+
+/* Cloudy-------------------------------- */
+.cloudy{
+    background:linear-gradient(to bottom,rgb(135, 207, 235),rgba(255, 115, 0, 0.13)),url("bg.png");
+    background-size: 100%;
+}
+.cloudy::before{
+    content: "";
+    position: absolute;
+    top:30px;
+    left: 1px;
+    width: 50%;
+    height: 50%;
+    background-image: url("cloud.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    animation: cloud 2s ease infinite;
+}
+@keyframes cloud {
+    50%{
+        background-position:1px 10px;
+    }
+}
+
+.cloudy::after{
+    content: "";
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    background-image: url("cloud.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    animation: cloud 2s linear infinite;
+}
+
+/* SUNNY -------------------------------- */
+.sunny{
+    background:linear-gradient(to bottom,rgba(135, 207, 235, 0.692),rgba(255, 255, 0, 0.315)),url("bg.png");
+    background-size: 100%;
+}
+.sunny::before{
+    content: "";
+    position: absolute;
+    top:30px;
+    right: 23%;
+    border:2px solid #ffcc3383;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #fafa78;
+    animation: sun 2s linear infinite;
+}
+@keyframes sun {
+    0%{
+        box-shadow: 0 0 10px yellow;
+    } 10%{
+        box-shadow:0 0 10px yellow, 0 0 20px yellow;
+    } 20%{
+        box-shadow:0 0 10px yellow, 0 0 20px yellow, 0 0 30px yellow;
+    } 30%{
+        box-shadow:0 0 10px yellow, 0 0 20px yellow, 0 0 30px yellow, 0 0 40px yellow;
+    } 40%{
+        box-shadow:0 0 10px yellow, 0 0 20px yellow, 0 0 30px yellow, 0 0 40px yellow, 0 0 50px yellow;
+    } 50%{
+        box-shadow:0 0 10px yellow, 0 0 20px yellow, 0 0 30px yellow, 0 0 40px yellow, 0 0 50px yellow, 0 0 60px yellow;
+    } 60%{
+        box-shadow:0 0 10px yellow, 0 0 20px yellow, 0 0 30px yellow, 0 0 40px yellow, 0 0 50px yellow, 0 0 60px yellow, 0 0 70px yellow;
+    } 70%{
+        box-shadow:0 0 10px yellow, 0 0 20px yellow, 0 0 30px yellow, 0 0 40px yellow, 0 0 50px yellow, 0 0 60px yellow, 0 0 70px yellow 0 0 80px yellow;
+    } 80%{
+        box-shadow:0 0 10px yellow, 0 0 20px yellow, 0 0 30px yellow, 0 0 40px yellow, 0 0 50px yellow, 0 0 60px yellow, 0 0 70px yellow 0 0 80px yellow, 0 0 90px yellow;
+    } 90%{
+        box-shadow:0 0 10px yellow, 0 0 20px yellow, 0 0 30px yellow, 0 0 40px yellow, 0 0 50px yellow, 0 0 60px yellow, 0 0 70px yellow 0 0 80px yellow, 0 0 90px yellow, 0 0 100px yellow;
+    } 100%{
+        box-shadow:0 0 10px yellow, 0 0 20px yellow, 0 0 30px yellow, 0 0 40px yellow, 0 0 50px yellow, 0 0 60px yellow, 0 0 70px yellow 0 0 80px yellow, 0 0 90px yellow, 0 0 100px yellow, 0 0 110px yellow;
+    }
+}
+
+/* HAZE------------------------------------------ */
+
+.haze{
+    background:url("bg.png");
+    background-size: 100%;
+    position: relative;
+}
+.haze::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    right: 0%;
+    height: 100%;
+    animation: haze 2s linear infinite;
+}
+@keyframes haze {
+   
+    0%{
+        background:linear-gradient(to bottom,rgba(254, 255, 255, 0.986),rgba(100, 104, 139, 0.904));
+    }
+    10%{
+        background:linear-gradient(to bottom,rgba(254, 255, 255, 0.986),rgba(100, 104, 139, 0.637));
+    }
+    20%{
+        background:linear-gradient(to bottom,rgba(254, 255, 255, 0.986),rgba(55, 58, 85, 0.418));
+    }
+    50%{
+        background:linear-gradient(to bottom,rgba(254, 255, 255, 0.986),rgba(100, 104, 139, 0.5));
+    }
+    70%{
+        background:linear-gradient(to bottom,rgba(254, 255, 255, 0.815),rgba(100, 104, 139, 0.582));
+
+    }
+    100%{
+        background:linear-gradient(to bottom,rgba(254, 255, 255, 0.438),rgba(100, 104, 139, 0.767));
+
+    }
+    
+}
+
+/* RAIN----------------------------------------- */
+.rain{
+    background:linear-gradient(to bottom,rgba(30, 31, 31, 0.986),rgba(81, 85, 114, 0.418)),url("bg.png");
+    background-size: 100%;
+    animation: color-change 2s linear infinite;
+}
+.rain:before{
+    content:'';
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:url(rain.png) ;
+    animation: rain 0.5s linear infinite;
+}
+
+@keyframes rain{
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: 50% -100%;
+    }
+}
+@keyframes color-change {
+
+    0%{
+        filter: hue-rotate(0deg);
+    }
+    50%{
+        filter: hue-rotate(360deg);
+    }
+    
+}
+
+.snow{
+    background-image:url("bg.png");
+    background-color: rgb(37, 37, 37);
+    background-size: 100%;
+    position: relative;
+   
+}
+.snow::after{
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    width: 100%;
+    height: 50%;
+    right: 0%;
+    background-image: url("snowbg.png");
+    background-size: 100%;
+    background-repeat: no-repeat;  
+}
+.snow::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    right: 0;
+    background-image: url("snow.png");
+    background-size: 100%;
+    
+    animation: snow 2s linear infinite;
+}
+
+@keyframes snow {
+    0%{
+        background-position: 0 0;
+    }
+    100%{
+        background-position: 100px 100px;
+    }
+}
+
+
+/* MOON-------------------------------------- */
+.moon{
+    background:linear-gradient(to bottom,rgba(21, 22, 22, 0.692),rgba(10, 10, 10, 0.315)),url("bg.png");
+    background-size: 100%;
+}
+.moon::before{
+    content: "";
+    position: absolute;
+    top:30px;
+    right: 23%;
+    border:2px solid rgba(0, 0, 0, 0.363);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: white;
+    animation: moon 2s ease-in-out infinite;
+}
+@keyframes moon {
+    0%{
+        box-shadow: 0 0 10px white;
+    } 10%{
+        box-shadow:0 0 10px white, 0 0 20px white;
+    } 20%{
+        box-shadow:0 0 10px white, 0 0 20px white, 0 0 30px white;
+    } 30%{
+        box-shadow:0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white;
+    } 40%{
+        box-shadow:0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white, 0 0 50px white;
+    } 50%{
+        box-shadow:0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white, 0 0 50px white, 0 0 60px white;
+    } 
+}

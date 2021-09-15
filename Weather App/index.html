@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="weather-card">
+        <div class="input ">
+            <input id="get-data"  type="text" placeholder="Enter Location...">
+            <div id="error"> **Wrong input </div>
+        </div>
+        <div class="icon_body ">
+            <div class="city_name output">
+                Miami,FL
+            </div>
+        </div>
+        <div class="date output">
+            9 June|Tuesday|2021
+        </div>
+
+        <div class="temp-container">
+            <div class="temp ">
+                <span id="temp" >23</span><span>&#8451</span>
+                <div class="mercury"></div>
+            </div>
+        </div>
+
+        <div class="weather output"> 
+            Sunny
+        </div>
+        <div class="max_min_temp output">
+            28c/22c
+        </div>
+    </div>
+    <script src="javascript.js"></script>
+</body>
+</html>
+
+
+
+<!-- api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key} -->
+
+<!-- api.openweathermap.org/data/2.5/weather?q=Amritsar&appid=c015423dc8d3dc39eeeec9d7a5ebe507
+ -->
